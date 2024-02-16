@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +43,11 @@ public class AdAdapter extends BaseAdapter {
         imageTV.setImageResource(ad.getImage());
         titleTV.setText(ad.getTitle());
         addressTV.setText(ad.getAddress());
+
         return view;
+    }
+
+    public AdModel getItemAtPosition(int position) {
+        return (AdModel) getItem(position);
     }
 }
