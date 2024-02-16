@@ -6,26 +6,33 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="56dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="56dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="60dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="196dp"
-        tools:layout_editor_absoluteY="60dp" />
+        app:layout_constraintStart_toEndOf="@+id/image_ad"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/adress_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="69dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="194dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintStart_toEndOf="@+id/image_ad"
+        app:layout_constraintTop_toBottomOf="@+id/title_ad" />
 </androidx.constraintlayout.widget.ConstraintLayout>
