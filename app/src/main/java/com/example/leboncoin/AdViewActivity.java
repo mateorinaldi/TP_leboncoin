@@ -2,7 +2,10 @@ package com.example.leboncoin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,24 +18,36 @@ public class AdViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LinearLayout b = new LinearLayout(this);
-        b.setOrientation(LinearLayout.VERTICAL);
+        setContentView(R.layout.activity_ad_view);
+        //LinearLayout b = new LinearLayout(this);
+        //b.setOrientation(LinearLayout.VERTICAL);
+
 
         Intent i = getIntent();
-        TextView title = new TextView(this);
-        TextView address = new TextView(this);
-        ImageView image = new ImageView(this);
+        boolean isdraw = i.getBooleanExtra("isDrawable",false);
+        TextView title = findViewById(R.id.title_adview);
+        TextView address = findViewById(R.id.address_adview);
+        ImageView image = findViewById(R.id.image_adview);
         String t = i.getStringExtra("title");
         String a = i.getStringExtra("address");
-        int im = i.getIntExtra("image",0);
+        String imagePath = i.getStringExtra("image");
+        if (isdraw == true) {
+            int im = this.getResources().getIdentifier(imagePath,"drawable",this.getPackageName());
+            image.setImageResource(im);
+        }
+        else {
+            Bitmap bmp = BitmapFactory.decodeFile(imagePath);
+            image.setImageBitmap(bmp);
+        }
+
         title.setText(t);
         address.setText(a);
-        image.setImageResource(im);
-        b.addView(title);
+
+        /*b.addView(title);
         b.addView(address);
-        b.addView(image);
+        b.addView(image);*/
         //setContentView(R.layout.activity_ad_view);
-        setContentView(b);
+
 
 
     }

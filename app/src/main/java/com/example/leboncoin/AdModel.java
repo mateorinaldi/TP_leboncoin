@@ -3,12 +3,14 @@ package com.example.leboncoin;
 public class AdModel {
     private String title;
     private String address;
-    private int image;
+    private String image;
+    boolean isDrawable;
 
-    public AdModel(String title,String address,int image){
-        this.title=title;
-        this.address=address;
-        this.image=image;
+    public AdModel(String title, String address, String image, boolean isDrawable) {
+        this.title = title;
+        this.address = address;
+        this.image = image;
+        this.isDrawable = isDrawable;
     }
     public String getTitle(){
         return title;
@@ -16,7 +18,7 @@ public class AdModel {
 
     public String getAddress () { return address;}
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
