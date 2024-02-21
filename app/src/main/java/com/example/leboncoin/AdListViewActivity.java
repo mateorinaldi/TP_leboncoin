@@ -51,6 +51,8 @@ public class AdListViewActivity extends AppCompatActivity {
                     Intent ad_view = new Intent(AdListViewActivity.this, AdViewActivity.class);
                     ad_view.putExtra("title", item.getTitle());
                     ad_view.putExtra("address", item.getAddress());
+                    ad_view.putExtra("mail", item.getMail());
+                    ad_view.putExtra("numero_de_telephone", item.getNumero_de_telephone());
                     ad_view.putExtra("image", item.getImage());
                     ad_view.putExtra("isDrawable",item.isDrawable);
                     ad_view.putExtra("description",item.getDescription());
