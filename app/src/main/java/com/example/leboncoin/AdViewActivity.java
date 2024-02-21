@@ -13,8 +13,8 @@ public class AdViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_view);
         Intent intent = getIntent();
-        int position = intent.getIntExtra("position", 0);
+        int id = intent.getIntExtra("position", 0)+1;
         TextView affichage = (TextView) findViewById(R.id.textView);
-        affichage.setText(Integer.toString(position));
+        affichage.setText(Integer.toString(id));
     }
 }
