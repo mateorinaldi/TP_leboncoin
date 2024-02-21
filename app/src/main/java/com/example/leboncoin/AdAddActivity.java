@@ -111,6 +111,7 @@ public class AdAddActivity extends AppCompatActivity {
                 Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
                 intent.putExtra("title", adTitle);
                 intent.putExtra("address", adAddress);
+
                 // Passez le chemin de l'image
                 intent.putExtra("imagePath", imagePath);
 

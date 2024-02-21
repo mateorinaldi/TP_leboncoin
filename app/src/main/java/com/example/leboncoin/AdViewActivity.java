@@ -27,10 +27,12 @@ public class AdViewActivity extends AppCompatActivity {
         boolean isdraw = i.getBooleanExtra("isDrawable",false);
         TextView title = findViewById(R.id.title_adview);
         TextView address = findViewById(R.id.address_adview);
+        TextView description = findViewById(R.id.description);
         ImageView image = findViewById(R.id.image_adview);
         String t = i.getStringExtra("title");
         String a = i.getStringExtra("address");
         String imagePath = i.getStringExtra("image");
+        String desc = i.getStringExtra("description");
         if (isdraw == true) {
             int im = this.getResources().getIdentifier(imagePath,"drawable",this.getPackageName());
             image.setImageResource(im);
@@ -42,6 +44,7 @@ public class AdViewActivity extends AppCompatActivity {
 
         title.setText(t);
         address.setText(a);
+        description.setText(desc);
 
         /*b.addView(title);
         b.addView(address);
