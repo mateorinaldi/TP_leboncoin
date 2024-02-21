@@ -2,14 +2,21 @@ package com.example.leboncoin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
         //A.addView(liste_annonces);
         //A.addView(ajouter_annonces);
 
+        //SQLiteDatabase database = SQLiteDatabase.openDatabase("res/database/leboncoin.db", null, SQLiteDatabase.OPEN_READONLY);
+        /*Cursor cursor = database.rawQuery("SELECT titre FROM articles WHERE titre='Iphone 7'", null);
+        String donnees = cursor.getString(0);*/
+        Resources res = getResources();
+        String path = res.getString(R.string.db_path);
+        //Context context = getApplicationContext();
+        //String dbPath = context.getDatabasePath("nom_de_votre_base_de_donnees.db").getAbsolutePath();
+        //SQLiteDatabase database = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
+        //Log.i("La valeur du title est",dbPath);
 
     }
 

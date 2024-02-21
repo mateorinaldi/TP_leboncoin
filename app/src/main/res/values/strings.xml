@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">leboncoin</string>
+    <string name="db_path">res/database/leboncoin.db</string>
 </resources>

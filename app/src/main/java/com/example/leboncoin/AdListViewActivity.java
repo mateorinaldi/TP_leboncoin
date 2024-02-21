@@ -34,12 +34,14 @@ public class AdListViewActivity extends AppCompatActivity {
             String imagePath = intent.getStringExtra("imagePath");
             AdModel ad = new AdModel(title,address,imagePath,false);
             liste.add(ad);
+
         }
         AdAdapter adapter = new AdAdapter(this, liste);
         ListView listview = findViewById(R.id.listview);
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     AdModel item = liste.get(position);
 
