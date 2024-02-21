@@ -58,9 +58,9 @@ public class AdViewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.setType("text/plain");
-                email.putExtra(android.content.Intent.EXTRA_EMAIL,"email@gmail.com");
+                email.putExtra(Intent.EXTRA_EMAIL,new String[]{"dorian.rousse@etu.imt-nord-europe.fr"});
                 email.putExtra(Intent.EXTRA_SUBJECT, "LebonCoin");
-                email.putExtra(Intent.EXTRA_TEXT, "Cet objet est-il toujours disponible");
+                email.putExtra(Intent.EXTRA_TEXT, "Cet objet est-il toujours disponible?");
                 email.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(Intent.createChooser(email, "Choisir le logiciel"));
             }

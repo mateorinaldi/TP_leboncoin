@@ -1,4 +1,4 @@
-package com.example.leboncoin;
+/*package com.example.leboncoin;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,4 +50,4 @@ public class RecyclerViewAdAdapter extends
             addressTextView = itemView.findViewById(...);
         }
     }
-}
+}*/
