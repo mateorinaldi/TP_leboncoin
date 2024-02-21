@@ -41,7 +41,9 @@ public class AdAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent ViewActivity = new Intent( context, AdViewActivity.class);
-                ViewActivity.putExtra("message", e.getText(). toString ());
+                ViewActivity.putExtra("address", ad.getAddress());
+                ViewActivity.putExtra("image", ad.getImage() );
+                ViewActivity.putExtra("title", ad.getTitle());
                 context.startActivity(ViewActivity);
             }
         });

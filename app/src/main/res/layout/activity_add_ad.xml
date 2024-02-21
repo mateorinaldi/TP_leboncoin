@@ -6,22 +6,21 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_add_ad"
         android:layout_width="158dp"
         android:layout_height="148dp"
         android:layout_marginStart="126dp"
         android:layout_marginTop="69dp"
         android:layout_marginEnd="127dp"
         android:layout_marginBottom="41dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTitle"
+        app:layout_constraintBottom_toTopOf="@+id/editTitle_add_ad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
         tools:srcCompat="@drawable/ic_launcher_background" />
 
     <EditText
-        android:id="@+id/editTitle"
+        android:id="@+id/editTitle_add_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -31,14 +30,14 @@
         android:ems="10"
         android:inputType="text"
         android:text="Title"
-        app:layout_constraintBottom_toTopOf="@+id/editAddress"
+        app:layout_constraintBottom_toTopOf="@+id/editAddress_add_ad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_add_ad" />
 
     <EditText
-        android:id="@+id/editAddress"
+        android:id="@+id/editAddress_add_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
@@ -48,13 +47,13 @@
         android:ems="10"
         android:inputType="text"
         android:text="Address"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonSend"
+        app:layout_constraintBottom_toTopOf="@+id/ButtonSend_add_ad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/editTitle_add_ad" />
 
     <Button
-        android:id="@+id/ButtonSend"
+        android:id="@+id/ButtonSend_add_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -65,6 +64,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_add_ad" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

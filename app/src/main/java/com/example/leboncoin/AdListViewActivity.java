@@ -23,7 +23,6 @@ public class AdListViewActivity extends AppCompatActivity {
         Liste_model.add(ad3);
         Liste_model.add(ad4);
 
-
         ListView L1 = (ListView) findViewById(R.id.List_1);
         AdAdapter adA = new AdAdapter(this, Liste_model);
         L1.setAdapter(adA);

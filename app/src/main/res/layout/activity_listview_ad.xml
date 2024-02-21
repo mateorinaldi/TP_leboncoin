@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_column="2">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,11 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="43dp" />
 
-    <ListView
-        android:id="@+id/List_1"
-        android:layout_width="409dp"
-        android:layout_height="645dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
