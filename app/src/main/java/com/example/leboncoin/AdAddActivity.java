@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -123,6 +124,7 @@ public class AdAddActivity extends AppCompatActivity {
                     // Le fichier n'existe pas
                     Log.d("pas d'images",imagePath);
                 }*/
+
                 startActivity(intent);
             }
         });
@@ -161,6 +163,26 @@ public class AdAddActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    private String saveImageToExternalStorage(Bitmap bitmap) {
+        String imagePath = null;
+        try {
+            // Créer un fichier dans le répertoire d'images de l'application
+            File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            File imageFile = new File(directory, "my_image.jpg");
+
+            // Écrire le bitmap dans le fichier
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+            // Obtenir le chemin d'accès du fichier image
+            imagePath = imageFile.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imagePath;
     }
 
 

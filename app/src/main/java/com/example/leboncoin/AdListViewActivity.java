@@ -38,6 +38,7 @@ public class AdListViewActivity extends AppCompatActivity {
             AdModel ad = new AdModel(title,address,imagePath,false,mail,numero,description);
             liste.add(ad);
 
+
         }
         AdAdapter adapter = new AdAdapter(this, liste);
         ListView listview = findViewById(R.id.listview);
