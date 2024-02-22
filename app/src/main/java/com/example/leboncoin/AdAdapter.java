@@ -1,4 +1,4 @@
-package com.example.leboncoin;
+/*package com.example.leboncoin;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -77,4 +77,6 @@ public class AdAdapter extends BaseAdapter {
         return view;
     }
 }
+
+ */
 

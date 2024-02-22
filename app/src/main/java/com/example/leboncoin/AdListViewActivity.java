@@ -1,6 +1,8 @@
 package com.example.leboncoin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class AdListViewActivity extends AppCompatActivity {
 
@@ -39,10 +43,15 @@ public class AdListViewActivity extends AppCompatActivity {
             liste.add(ad);
 
         }
-        AdAdapter adapter = new AdAdapter(this, liste);
-        ListView listview = findViewById(R.id.listview);
-        listview.setAdapter(adapter);
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerViewAdAdapter adapter = new RecyclerViewAdAdapter(this, liste);
+
+        // Configurez le RecyclerView avec un GridLayoutManager à deux colonnes
+        int numberOfColumns = 2;
+        GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfColumns);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        /*recyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
 
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -60,6 +69,6 @@ public class AdListViewActivity extends AppCompatActivity {
 
                 }
             });
-
+*/
     }
 }
