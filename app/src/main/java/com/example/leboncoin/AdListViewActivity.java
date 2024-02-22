@@ -42,6 +42,7 @@ public class AdListViewActivity extends AppCompatActivity {
             AdModel ad = new AdModel(title,address,imagePath,false,mail,numero,description);
             liste.add(ad);
 
+
         }
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         RecyclerViewAdAdapter adapter = new RecyclerViewAdAdapter(this, liste);
