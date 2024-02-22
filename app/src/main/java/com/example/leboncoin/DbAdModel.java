@@ -4,6 +4,7 @@ public class DbAdModel {
     private String title;
     private String address;
     private String image;
+    boolean isDrawable; //problème isDrawalable n'est pas dans la base de donnée
     private int id;
     private String description;
     private int price;
@@ -13,9 +14,10 @@ public class DbAdModel {
     private String mail;
     private String is_available;
 
-    public DbAdModel(int id, String image, String title, String description, int price, String category, String seller, String address, int telephone, String mail, String is_available) {
+    public DbAdModel(int id, String image,boolean isDrawable, String title, String description, int price, String category, String seller, String address, int telephone, String mail, String is_available) {
         this.id = id;
         this.image=image;
+        this.isDrawable = isDrawable;
         this.title=title;
         this.description=description;
         this.price=price;

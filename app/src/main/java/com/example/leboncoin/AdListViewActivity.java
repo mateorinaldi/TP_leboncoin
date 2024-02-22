@@ -22,6 +22,22 @@ public class AdListViewActivity extends AppCompatActivity {
         //ArrayList<AdModel> liste = new ArrayList<AdModel>();
         //liste.add(test1);
         //liste.add(test2);
+        Intent intent = getIntent();
+        if (intent != null) {
+            String title = intent.getStringExtra("title");
+            String address = intent.getStringExtra("address");
+            String imagePath = intent.getStringExtra("imagePath");
+            String numero_de_telephone = intent.getStringExtra("numero_de_telephone"); //problème car les numéros de la base de données sont en int
+            String description = intent.getStringExtra("description");
+            String mail = intent.getStringExtra("mail");
+            String price = intent.getStringExtra("price");
+            String seller = intent.getStringExtra("seller");
+            String category = intent.getStringExtra("category");
+
+            DbAdModel ad = new DbAdModel(longeur_base_de_donnee+1,imagePath,false, title,description, Integer.parseInt(price), category, seller, address, numero_de_telephone,mail,true);
+            liste.add(ad); // comment ajouter un item dans la base de donnée?
+
+        }
 
         DBManager dbManager = DBManager.getDBManager(this);
         dbManager.open();
@@ -41,8 +57,17 @@ public class AdListViewActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(context,AdViewActivity.class);
-                intent.putExtra("position", position);
+                intent.putExtra("position", position);          //comment accéder aux items de la base de données
                 //based on item add info to intent
+                intent.putExtra("title", item.getTitle());
+                intent.putExtra("address", item.getAddress());
+                intent.putExtra("mail", item.getMail());
+                intent.putExtra("numero_de_telephone", item.getTelephone());
+                intent.putExtra("image", item.getImage());
+                intent.putExtra("isDrawable",item.isDrawable);
+                intent.putExtra("description",item.getDescription());
+                intent.putExtra("category",item.getCategory());
+                intent.putExtra("seller",item.getSeller());
                 startActivity(intent);
             }
         });
