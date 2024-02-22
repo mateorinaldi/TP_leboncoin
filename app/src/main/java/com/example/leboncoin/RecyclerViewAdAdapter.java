@@ -45,6 +45,8 @@ public class RecyclerViewAdAdapter extends RecyclerView.Adapter<RecyclerViewAdAd
         String address = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.ADDRESS));
         String image = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.IMAGE));
         String description = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.DESCRIPTION));
+        String num = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.TELEPHONE));
+        String mail = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.MAIL));
 
         holder.titleTextView.setText(title);
         holder.addressTextView.setText(address);
@@ -70,6 +72,8 @@ public class RecyclerViewAdAdapter extends RecyclerView.Adapter<RecyclerViewAdAd
                 ViewActivity.putExtra("image", image);
                 ViewActivity.putExtra("title", title);
                 ViewActivity.putExtra("description",description);
+                ViewActivity.putExtra("numero_de_telephone",num);
+                ViewActivity.putExtra("mail",mail);
 
                 // Vous pouvez ajouter d'autres données à transmettre à l'activité de détails ici
 
