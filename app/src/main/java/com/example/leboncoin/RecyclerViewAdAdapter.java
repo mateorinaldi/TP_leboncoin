@@ -2,6 +2,7 @@ package com.example.leboncoin;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RecyclerViewAdAdapter extends RecyclerView.Adapter<RecyclerViewAdAdapter.RecyclerViewHolder> {
-    private List<AdModel> adModelArrayList;
+    private Cursor cursor;
     private Context context;
 
-    public RecyclerViewAdAdapter(Context context, List<AdModel> data) {
+    public RecyclerViewAdAdapter(Context context, Cursor cursor) {
         this.context = context;
-        this.adModelArrayList = data;
+        this.cursor = cursor;
     }
 
     @NonNull
@@ -36,50 +37,50 @@ public class RecyclerViewAdAdapter extends RecyclerView.Adapter<RecyclerViewAdAd
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        AdModel ad = adModelArrayList.get(position);
-        holder.titleTextView.setText(ad.getTitle());
-        holder.addressTextView.setText(ad.getAddress());
+        if (!cursor.moveToPosition(position)) {
+            return;
+        }
+
+        String title = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.TITLE));
+        String address = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.ADDRESS));
+        String image = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.IMAGE));
+        String description = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.DESCRIPTION));
+
+        holder.titleTextView.setText(title);
+        holder.addressTextView.setText(address);
 
         // Vérifiez si l'image est une ressource drawable
-        if (ad.isDrawable) {
-            int resId = context.getResources().getIdentifier(ad.getImage(), "drawable", context.getPackageName());
-            if (resId != 0) {
-                holder.imageView.setImageResource(resId);
-                Log.d("image drawable",ad.getImage());
-            }
+        int resId = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
+        if (resId != 0) {
+            holder.imageView.setImageResource(resId);
+            Log.d("image drawable", image);
         } else { // Si l'image provient de la galerie
-            String imagePath = ad.getImage();
-
-            if (imagePath != null && !imagePath.isEmpty()) {
-                Log.d("image non drawable",imagePath);
-                Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-                if (bitmap != null) {
-                    holder.imageView.setImageBitmap(bitmap);
-                }
+            Bitmap bitmap = BitmapFactory.decodeFile(image);
+            if (bitmap != null) {
+                holder.imageView.setImageBitmap(bitmap);
             }
         }
 
+        // Gestion de l'événement de clic sur l'élément de la liste
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent ViewActivity = new Intent(context, AdViewActivity.class);
-                ViewActivity.putExtra("address", ad.getAddress());
-                ViewActivity.putExtra("image", ad.getImage());
-                ViewActivity.putExtra("title", ad.getTitle());
-                ViewActivity.putExtra("mail", ad.getMail());
-                ViewActivity.putExtra("numero_de_telephone", ad.getNumero_de_telephone());
-                ViewActivity.putExtra("isDrawable", ad.isDrawable);
-                ViewActivity.putExtra("description", ad.getDescription());
+                ViewActivity.putExtra("address", address);
+                ViewActivity.putExtra("image", image);
+                ViewActivity.putExtra("title", title);
+                ViewActivity.putExtra("description",description);
+
+                // Vous pouvez ajouter d'autres données à transmettre à l'activité de détails ici
 
                 context.startActivity(ViewActivity);
             }
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return adModelArrayList.size();
+        return cursor.getCount();
     }
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {

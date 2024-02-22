@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +29,7 @@ public class AdAddActivity extends AppCompatActivity {
     Button gallery_open_id;
     String imagePath = "";
 
+    private DBManager dbManager;
     ActivityResultLauncher<Intent> cameraActivityResultLauncher;
     ActivityResultLauncher<Intent> galleryActivityResultLauncher;
 
@@ -49,7 +49,7 @@ public class AdAddActivity extends AppCompatActivity {
         camera_open_id.setText("Ouvrir caméra");
         gallery_open_id.setText("Ouvrir galerie");
 
-
+        dbManager = DBManager.getDBManager(this);
         cameraActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -62,7 +62,7 @@ public class AdAddActivity extends AppCompatActivity {
 
                         // Convertir le Bitmap en chemin de fichier
                         imagePath = saveBitmap(imageBitmap); // Mettre à jour la variable de niveau de classe
-                        address.setText(imagePath);
+
                     }
                 }
             }
@@ -79,7 +79,7 @@ public class AdAddActivity extends AppCompatActivity {
 
                         // Récupérer le chemin de l'image à partir de l'URI
                         imagePath = getPathFromUri(imageUri); // Mettre à jour la variable de niveau de classe
-                        title.setText(imagePath);
+
 
                     }
                 }
@@ -109,10 +109,26 @@ public class AdAddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String adTitle = title.getText().toString();
                 String adAddress = address.getText().toString();
+
+                // Insérer les données dans la base de données
+                DbAdModel ad = new DbAdModel(0, imagePath, adTitle, null, 0, null, null, adAddress, 0, null, null);
+                dbManager.open();
+                dbManager.insert(ad);
+                dbManager.close();
+
                 Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
                 intent.putExtra("title", adTitle);
                 intent.putExtra("address", adAddress);
+                // Passez le chemin de l'image
+                intent.putExtra("imagePath", imagePath);
+                startActivity(intent);
+            }
 
+                /*String adTitle = title.getText().toString();
+                String adAddress = address.getText().toString();
+                Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
+                intent.putExtra("title", adTitle);
+                intent.putExtra("address", adAddress);
                 // Passez le chemin de l'image
                 intent.putExtra("imagePath", imagePath);
 
@@ -123,10 +139,9 @@ public class AdAddActivity extends AppCompatActivity {
                 } else {
                     // Le fichier n'existe pas
                     Log.d("pas d'images",imagePath);
-                }*/
-
-                startActivity(intent);
-            }
+                }
+                startActivity(intent);*/
+            /*           }*/
         });
     }
 
@@ -164,26 +179,7 @@ public class AdAddActivity extends AppCompatActivity {
             }
         }
     }
-    private String saveImageToExternalStorage(Bitmap bitmap) {
-        String imagePath = null;
-        try {
-            // Créer un fichier dans le répertoire d'images de l'application
-            File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-            File imageFile = new File(directory, "my_image.jpg");
 
-            // Écrire le bitmap dans le fichier
-            FileOutputStream outputStream = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-            outputStream.flush();
-            outputStream.close();
-
-            // Obtenir le chemin d'accès du fichier image
-            imagePath = imageFile.getAbsolutePath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return imagePath;
-    }
 
 
 }

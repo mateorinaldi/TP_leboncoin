@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.text.TextRunShaper;
 import android.net.Uri;
@@ -21,12 +22,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdListViewActivity extends AppCompatActivity {
-
+    private DBManager dbManager;
+    private ListView listView;
+    private DbAdAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_list_view);
-        AdModel ad1 = new AdModel("Raspberry pi 0W", "8 Rue Colbrant, 59000 Lille", "i1", true, "mathiasribeiro62@free.fr", "+33 06 45 78 49 22", "Carte Raspberry pi neuve, jamais utilisée, datant de 2020");
+        /*AdModel ad1 = new AdModel("Raspberry pi 0W", "8 Rue Colbrant, 59000 Lille", "i1", true, "mathiasribeiro62@free.fr", "+33 06 45 78 49 22", "Carte Raspberry pi neuve, jamais utilisée, datant de 2020");
         AdModel ad2 = new AdModel("Aspirateur sans fil Dyson", "75 Rue du 14 Juillet, 59113 Seclin", "i2", true, "lopez.jeanne478@gmail.com", "+33 06 11 22 44 57", "Aspirateur utilisé 1 an, très bon état, modèle : v15s detect submarine");
         AdModel ad3 = new AdModel("Huawei P30", "26 Rue Napoléon Demarquette, 62110 Hénin-Beaumont", "i3", true, "arnaud59.tysiere@orange.fr", null, "Téléphone huawei, utilisé 1 an, arrière légèrement abîmé");
         AdModel ad4 = new AdModel("Renault clio 3", "263 Rue du Grand Bail, 59500 Douai", "i4", true, "sylvie.adou@hotmail.fr", null, "Renault Clio 3 en très bon état, CT fait, 180000km, prix : 4500€ non négociable");
@@ -109,9 +112,18 @@ public class AdListViewActivity extends AppCompatActivity {
             liste.add(ad);
 
 
-        }
+        }*/
+        dbManager = DBManager.getDBManager(this);
+        //dbManager.init();
+
+        // Ouvre la connexion à la base de données
+        dbManager.open();
+        //dbManager.init();
+
+        // Récupère les données depuis la base de données
+        Cursor cursor = dbManager.fetch();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdAdapter adapter = new RecyclerViewAdAdapter(this, liste);
+        RecyclerViewAdAdapter adapter = new RecyclerViewAdAdapter(this, cursor);
 
         // Configurez le RecyclerView avec un GridLayoutManager à deux colonnes
         int numberOfColumns = 2;
@@ -137,5 +149,11 @@ public class AdListViewActivity extends AppCompatActivity {
                 }
             });
 */
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Ferme la connexion à la base de données lorsque l'activité est détruite
+        dbManager.close();
     }
 }

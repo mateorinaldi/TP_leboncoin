@@ -46,14 +46,24 @@ public class AdViewActivity extends AppCompatActivity {
         String mail = i.getStringExtra("mail");
         String numero = i.getStringExtra("numero_de_telephone");
 
-        if (isdraw == true) {
+        int im = getResources().getIdentifier(imagePath,"drawable",getPackageName());
+        if (im==0) {
+            Bitmap bmp = BitmapFactory.decodeFile(imagePath);
+            image.setImageBitmap(bmp);
+        }
+        else {
+            //imageView.setImageBitmap(bmp);
+            image.setImageResource(im);
+        }
+
+        /*if (isdraw == true) {
             int im = this.getResources().getIdentifier(imagePath,"drawable",this.getPackageName());
             image.setImageResource(im);
         }
         else {
             Bitmap bmp = BitmapFactory.decodeFile(imagePath);
             image.setImageBitmap(bmp);
-        }
+        }*/
 
         title.setText(t);
         address.setText(a);
