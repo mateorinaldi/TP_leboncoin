@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.File;
 
@@ -27,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button liste_annonces = findViewById(R.id.ad_list_button);
         Button ajouter_annonces = findViewById(R.id.ad_add_button);
+        ImageView image_main = findViewById(R.id.image_accueil);
+        TextView createurs = findViewById(R.id.texte_createurs);
+        createurs.setText("Par Dorian Rousse, Matéo Rinaldi et Maxime Duval");
 
+
+        image_main.setImageResource(R.drawable.image_accueil);
         //A.setOrientation(LinearLayout.HORIZONTAL);
         liste_annonces.setText("Liste annonces");
         ajouter_annonces.setText("Ajouter une annonce");
