@@ -29,7 +29,7 @@ public class AdListViewActivity extends AppCompatActivity {
 
         // Initialise le gestionnaire de base de données
         dbManager = DBManager.getDBManager(this);
-        dbManager.init();
+        //dbManager.init();
 
         // Ouvre la connexion à la base de données
         dbManager.open();
@@ -43,6 +43,13 @@ public class AdListViewActivity extends AppCompatActivity {
         // Initialise la ListView
         listView = findViewById(R.id.listview);
         listView.setAdapter(adapter);
+        //Intent intent = getIntent();
+        /*if (intent != null) {
+            String title = intent.getStringExtra("title");
+            String address = intent.getStringExtra("address");
+            String imagePath = intent.getStringExtra("imagePath");
+            DbAdModel ad*/
+
         /*AdModel test = new AdModel("test", "test", "crescentcity3",true);
         AdModel test2 = new AdModel("test2", "test2", "crescentcity3",true);
         ArrayList<AdModel> liste = new ArrayList<AdModel>();

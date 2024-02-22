@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
@@ -37,7 +38,14 @@ public class DbAdAdapter extends CursorAdapter {
         int im = context.getResources().getIdentifier(image,"drawable",context.getPackageName());
         titleTextView.setText(title);
         addressTextView.setText("Adresse : " + address);
-        //imageView.setImageBitmap(bmp);
-        imageView.setImageResource(im);
+        if (im==0) {
+            Bitmap bmp = BitmapFactory.decodeFile(image);
+            imageView.setImageBitmap(bmp);
+        }
+        else {
+            //imageView.setImageBitmap(bmp);
+            imageView.setImageResource(im);
+        }
+        Log.d("qjknjqrgvnkqjvnjqbn", String.valueOf(im));
     }
 }

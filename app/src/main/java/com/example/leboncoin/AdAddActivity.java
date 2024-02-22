@@ -29,6 +29,7 @@ public class AdAddActivity extends AppCompatActivity {
     Button gallery_open_id;
     String imagePath = "";
 
+    private DBManager dbManager;
     ActivityResultLauncher<Intent> cameraActivityResultLauncher;
     ActivityResultLauncher<Intent> galleryActivityResultLauncher;
 
@@ -48,7 +49,7 @@ public class AdAddActivity extends AppCompatActivity {
         camera_open_id.setText("Ouvrir caméra");
         gallery_open_id.setText("Ouvrir galerie");
 
-
+        dbManager = DBManager.getDBManager(this);
         cameraActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -108,6 +109,23 @@ public class AdAddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String adTitle = title.getText().toString();
                 String adAddress = address.getText().toString();
+
+                // Insérer les données dans la base de données
+                DbAdModel ad = new DbAdModel(0, imagePath, adTitle, null, 0, null, null, adAddress, 0, null, null);
+                dbManager.open();
+                dbManager.insert(ad);
+                dbManager.close();
+
+                Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
+                intent.putExtra("title", adTitle);
+                intent.putExtra("address", adAddress);
+                // Passez le chemin de l'image
+                intent.putExtra("imagePath", imagePath);
+                startActivity(intent);
+            }
+
+                /*String adTitle = title.getText().toString();
+                String adAddress = address.getText().toString();
                 Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
                 intent.putExtra("title", adTitle);
                 intent.putExtra("address", adAddress);
@@ -121,9 +139,9 @@ public class AdAddActivity extends AppCompatActivity {
                 } else {
                     // Le fichier n'existe pas
                     Log.d("pas d'images",imagePath);
-                }*/
-                startActivity(intent);
-            }
+                }
+                startActivity(intent);*/
+ /*           }*/
         });
     }
 
@@ -161,6 +179,7 @@ public class AdAddActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
 }
