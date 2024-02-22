@@ -2,6 +2,8 @@ package com.example.leboncoin;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +33,11 @@ public class DbAdAdapter extends CursorAdapter {
         String address = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.ADDRESS));
         String image = cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.IMAGE));
 
-
+        //Bitmap bmp = BitmapFactory.decodeFile(image);
+        int im = context.getResources().getIdentifier(image,"drawable",context.getPackageName());
         titleTextView.setText(title);
         addressTextView.setText("Adresse : " + address);
+        //imageView.setImageBitmap(bmp);
+        imageView.setImageResource(im);
     }
 }

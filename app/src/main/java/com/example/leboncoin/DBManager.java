@@ -38,7 +38,7 @@ public class DBManager {
     // Add ads manually.
     public void init(){
         open();
-        insert(new DbAdModel(1, "test.jpg", "Raspberry pi 0W", "Carte Raspberry pi neuve, jamais utilisée, datant de 2020", 20, "Informatique", "Mathias", "8 Rue Colbrant, 59000 Lille", 645784922, "mathiasribeiro62@free.fr", "True"));
+        insert(new DbAdModel(1, "crescenctcity3", "Raspberry pi 0W", "Carte Raspberry pi neuve, jamais utilisée, datant de 2020", 20, "Informatique", "Mathias", "8 Rue Colbrant, 59000 Lille", 645784922, "mathiasribeiro62@free.fr", "True"));
         insert(new DbAdModel(2, "test.jpg", "Aspirateur sans fil Dyson", "Aspirateur utilisé 1 an, très bon état, modèle : v15s detect submarine", 550, "Electroménager", "Jeanne", "75 Rue du 14 Juillet, 59113 Seclin", 611224457, "lopez.jeanne478@gmail.com", "True"));
         insert(new DbAdModel(3, "test.jpg", "Huawei P30", "Téléphone huawei, utilisé 1 an, arrière légèrement abîmé", 150, "Informatique", "Arnaud", "26 Rue Napoléon Demarquette, 62110 Hénin-Beaumont", 748755596, "arnaud59.tysiere@orange.fr", "True"));
         insert(new DbAdModel(4, "test.jpg", "Renault clio 3", "Renault Clio 3 en très bon état, CT fait, 180000km, prix : 4500€ non négociable", 4500, "Véhicule", "Hadoux", "263 Rue du Grand Bail, 59500 Douai", 675481923, "sylvie.adou@hotmail.fr", "True"));

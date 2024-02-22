@@ -3,6 +3,7 @@ package com.example.leboncoin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.text.TextRunShaper;
 import android.net.Uri;
@@ -18,11 +19,31 @@ import java.util.List;
 
 public class AdListViewActivity extends AppCompatActivity {
 
+    private DBManager dbManager;
+    private ListView listView;
+    private DbAdAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_list_view);
-        AdModel test = new AdModel("test", "test", "crescentcity3",true);
+
+        // Initialise le gestionnaire de base de données
+        dbManager = DBManager.getDBManager(this);
+        dbManager.init();
+
+        // Ouvre la connexion à la base de données
+        dbManager.open();
+
+        // Récupère les données depuis la base de données
+        Cursor cursor = dbManager.fetch();
+
+        // Crée un adaptateur pour la ListView
+        adapter = new DbAdAdapter(this, cursor, R.layout.item_listview_ad);
+
+        // Initialise la ListView
+        listView = findViewById(R.id.listview);
+        listView.setAdapter(adapter);
+        /*AdModel test = new AdModel("test", "test", "crescentcity3",true);
         AdModel test2 = new AdModel("test2", "test2", "crescentcity3",true);
         ArrayList<AdModel> liste = new ArrayList<AdModel>();
         liste.add(test);
@@ -53,7 +74,13 @@ public class AdListViewActivity extends AppCompatActivity {
                     startActivity(ad_view);
 
                 }
-            });
+            });*/
 
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Ferme la connexion à la base de données lorsque l'activité est détruite
+        dbManager.close();
     }
 }
