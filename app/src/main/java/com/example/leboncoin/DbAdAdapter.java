@@ -46,6 +46,5 @@ public class DbAdAdapter extends CursorAdapter {
             //imageView.setImageBitmap(bmp);
             imageView.setImageResource(im);
         }
-        Log.d("qjknjqrgvnkqjvnjqbn", String.valueOf(im));
     }
 }

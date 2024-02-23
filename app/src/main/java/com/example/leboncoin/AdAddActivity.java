@@ -111,37 +111,19 @@ public class AdAddActivity extends AppCompatActivity {
                 String adAddress = address.getText().toString();
 
                 // Insérer les données dans la base de données
-                DbAdModel ad = new DbAdModel(0, imagePath, adTitle, null, 0, null, null, adAddress, 0, null, null);
+                /*DbAdModel ad = new DbAdModel(0, imagePath, adTitle, null, 0, null, null, adAddress, 0, null, null);
                 dbManager.open();
                 dbManager.insert(ad);
-                dbManager.close();
+                dbManager.close();*/
 
-                Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
+                //Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
+                Intent intent = new Intent(AdAddActivity.this,AdAddParamActivity.class);
                 intent.putExtra("title", adTitle);
                 intent.putExtra("address", adAddress);
                 // Passez le chemin de l'image
                 intent.putExtra("imagePath", imagePath);
                 startActivity(intent);
             }
-
-                /*String adTitle = title.getText().toString();
-                String adAddress = address.getText().toString();
-                Intent intent = new Intent(AdAddActivity.this, AdListViewActivity.class);
-                intent.putExtra("title", adTitle);
-                intent.putExtra("address", adAddress);
-                // Passez le chemin de l'image
-                intent.putExtra("imagePath", imagePath);
-
-                File imgFile = new File(imagePath);
-               /* if (imgFile.exists()) {
-                    // Le fichier existe
-                    Log.d("image existe", imagePath);
-                } else {
-                    // Le fichier n'existe pas
-                    Log.d("pas d'images",imagePath);
-                }
-                startActivity(intent);*/
-            /*           }*/
         });
     }
 

@@ -25,8 +25,6 @@ public class AdViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_view);
-        //LinearLayout b = new LinearLayout(this);
-        //b.setOrientation(LinearLayout.VERTICAL);
 
 
         Intent i = getIntent();
@@ -34,6 +32,7 @@ public class AdViewActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.title_adview);
         TextView address = findViewById(R.id.address_adview);
         TextView description = findViewById(R.id.description);
+        TextView prix = findViewById(R.id.price_item);
         ImageView image = findViewById(R.id.image_adview);
         FloatingActionButton b3 = (FloatingActionButton) findViewById(R.id.Button_map_view_activity);
         FloatingActionButton b4 = (FloatingActionButton) findViewById(R.id.Button_phone_view_activity);
@@ -45,6 +44,7 @@ public class AdViewActivity extends AppCompatActivity {
         String desc = i.getStringExtra("description");
         String mail = i.getStringExtra("mail");
         String numero = i.getStringExtra("numero_de_telephone");
+        String price = i.getStringExtra("Prix");
 
         int im = getResources().getIdentifier(imagePath,"drawable",getPackageName());
         if (im==0) {
@@ -52,27 +52,14 @@ public class AdViewActivity extends AppCompatActivity {
             image.setImageBitmap(bmp);
         }
         else {
-            //imageView.setImageBitmap(bmp);
             image.setImageResource(im);
         }
 
-        /*if (isdraw == true) {
-            int im = this.getResources().getIdentifier(imagePath,"drawable",this.getPackageName());
-            image.setImageResource(im);
-        }
-        else {
-            Bitmap bmp = BitmapFactory.decodeFile(imagePath);
-            image.setImageBitmap(bmp);
-        }*/
 
         title.setText(t);
         address.setText(a);
         description.setText(desc);
-
-        /*b.addView(title);
-        b.addView(address);
-        b.addView(image);*/
-        //setContentView(R.layout.activity_ad_view);
+        prix.setText(price+"€");
 
         String transfromaddress = transformAddress(a);
         b3.setOnClickListener(new View.OnClickListener() {

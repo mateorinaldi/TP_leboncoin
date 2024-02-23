@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //LinearLayout A = new LinearLayout(this);
         setContentView(R.layout.activity_main);
         Button liste_annonces = findViewById(R.id.ad_list_button);
         Button ajouter_annonces = findViewById(R.id.ad_add_button);
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         image_main.setImageResource(R.drawable.image_accueil);
-        //A.setOrientation(LinearLayout.HORIZONTAL);
         liste_annonces.setText("Liste annonces");
         ajouter_annonces.setText("Ajouter une annonce");
 
@@ -52,52 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(ajouter_ad);
             }
         });
-        //A.addView(liste_annonces);
-        //A.addView(ajouter_annonces);
 
-        //SQLiteDatabase database = SQLiteDatabase.openDatabase("res/database/leboncoin.db", null, SQLiteDatabase.OPEN_READONLY);
-        /*Cursor cursor = database.rawQuery("SELECT titre FROM articles WHERE titre='Iphone 7'", null);
-        String donnees = cursor.getString(0);*/
-        Resources res = getResources();
-        String path = res.getString(R.string.db_path);
-        //Context context = getApplicationContext();
-        //String dbPath = context.getDatabasePath("nom_de_votre_base_de_donnees.db").getAbsolutePath();
-        //SQLiteDatabase database = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
-        //Log.i("La valeur du title est",dbPath);
 
     }
 
-}        /*
-        LinearLayout b = new LinearLayout(this);
-        b.setOrientation(LinearLayout.VERTICAL);
-
-
-        ImageView imageView = new ImageView(this);
-
-        // Chemin de l'image
-        String imagePath = "drawable/crescentcity3/jpg";
-
-        // Charger l'image dans l'ImageView
-        loadImageFromPath(imagePath, imageView);
-        int resourceId = getResources().getIdentifier("crescentcity3", "drawable", getPackageName());
-
-// Charger l'image dans l'ImageView à partir des ressources drawable
-        imageView.setImageResource(resourceId);
-
-// Ajouter l'ImageView au LinearLayout
-        b.addView(imageView);
-
-// Définir le layout comme le contenu de l'activité
-
-
-        setContentView(b);
-    }
-
-    private void loadImageFromPath(String path, ImageView imageView) {
-        // Charger l'image depuis le chemin spécifié
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
-
-        // Afficher l'image dans l'ImageView
-        imageView.setImageBitmap(bitmap);
-    }*/
-
+}
