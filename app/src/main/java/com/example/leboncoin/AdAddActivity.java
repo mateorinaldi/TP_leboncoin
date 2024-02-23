@@ -103,7 +103,7 @@ public class AdAddActivity extends AppCompatActivity {
         });
 
         Button send = findViewById(R.id.button_ajouter_annonce);
-        send.setText("Valider");
+        send.setText("Suivant");
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

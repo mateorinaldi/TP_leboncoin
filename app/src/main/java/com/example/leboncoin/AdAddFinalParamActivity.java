@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AdAddFinalParamActivity extends AppCompatActivity {
     private DBManager dbManager;
@@ -26,22 +27,16 @@ public class AdAddFinalParamActivity extends AppCompatActivity {
         EditText cat = findViewById(R.id.param_category);
         EditText desc = findViewById(R.id.param_description);
         EditText pr = findViewById(R.id.param_price);
+        TextView p = findViewById(R.id.price_textview);
+        p.setText("Prix");
         Button valider = findViewById(R.id.ajouter_annonce_finale);
+        valider.setText("Valider");
         cat.setText("Categorie");
         desc.setText("Description");
-        pr.setText("Prix");
+        pr.setText("0");
         String adPrice = pr.getText().toString();
         String adDesc = desc.getText().toString();
         String category = cat.getText().toString();
-        Log.d("donnéessssssss",title);
-        Log.d("donnéessssssss",adresse);
-        Log.d("donnéessssssss",imagePath);
-        Log.d("donnéessssssss",mail);
-        Log.d("donnéessssssss",numero);
-        Log.d("donnéessssssss",name);
-        Log.d("donnéessssssss",adDesc);
-        Log.d("donnéessssssss",adPrice);
-        Log.d("donnéessssssss",category);
         dbManager = DBManager.getDBManager(this);
         valider.setOnClickListener(new View.OnClickListener() {
             @Override

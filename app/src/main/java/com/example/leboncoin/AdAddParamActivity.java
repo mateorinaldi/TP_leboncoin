@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class AdAddParamActivity extends AppCompatActivity {
 
     @Override
@@ -24,7 +26,9 @@ public class AdAddParamActivity extends AppCompatActivity {
         EditText numero = findViewById(R.id.numero_ad_add);
         EditText mail = findViewById(R.id.mail_vendeur);
         Button next = findViewById(R.id.suivant_infos_vendeur);
-        numero.setText("Numero");
+        TextView textnum = findViewById(R.id.textview_num);
+        textnum.setText("Numero de telephone");
+        numero.setText("0");
         name.setText("Nom du vendeur/fournisseur");
         mail.setText("adresse mail");
         next.setText("Suivant");
